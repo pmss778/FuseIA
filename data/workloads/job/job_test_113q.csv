@@ -1,0 +1,3800 @@
+Query_id,Query_text,source_file,source_sha256
+10a,"SELECT MIN(chn.name) AS uncredited_voiced_character,
+       MIN(t.title) AS russian_movie
+FROM char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     company_type AS ct,
+     movie_companies AS mc,
+     role_type AS rt,
+     title AS t
+WHERE ci.note LIKE '%(voice)%'
+  AND ci.note LIKE '%(uncredited)%'
+  AND cn.country_code = '[ru]'
+  AND rt.role = 'actor'
+  AND t.production_year > 2005
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND chn.id = ci.person_role_id
+  AND rt.id = ci.role_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",10a.sql,dcffd7d004228d834af7bf332e365837cc5a3fb60fb3859a55235da6d1455a89
+10b,"SELECT MIN(chn.name) AS character,
+       MIN(t.title) AS russian_mov_with_actor_producer
+FROM char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     company_type AS ct,
+     movie_companies AS mc,
+     role_type AS rt,
+     title AS t
+WHERE ci.note LIKE '%(producer)%'
+  AND cn.country_code = '[ru]'
+  AND rt.role = 'actor'
+  AND t.production_year > 2010
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND chn.id = ci.person_role_id
+  AND rt.id = ci.role_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",10b.sql,66be16fbc0d5bb3a99e50581448613645e6b53286e7b15cebbb5043a98bcbb3d
+10c,"SELECT MIN(chn.name) AS character,
+       MIN(t.title) AS movie_with_american_producer
+FROM char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     company_type AS ct,
+     movie_companies AS mc,
+     role_type AS rt,
+     title AS t
+WHERE ci.note LIKE '%(producer)%'
+  AND cn.country_code = '[us]'
+  AND t.production_year > 1990
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND chn.id = ci.person_role_id
+  AND rt.id = ci.role_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",10c.sql,ccbce6a9f74d3ce0da968314672b0b5c7a479eb72621d4e845586b1150287292
+11a,"SELECT MIN(cn.name) AS from_company,
+       MIN(lt.link) AS movie_link_type,
+       MIN(t.title) AS non_polish_sequel_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND t.production_year BETWEEN 1950 AND 2000
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id;",11a.sql,b9c2b7f747fd10fff3e9078534d5578ea8b53fc9dcb4bd9330952d74ec1ece0e
+11b,"SELECT MIN(cn.name) AS from_company,
+       MIN(lt.link) AS movie_link_type,
+       MIN(t.title) AS sequel_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follows%'
+  AND mc.note IS NULL
+  AND t.production_year = 1998
+  AND t.title LIKE '%Money%'
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id;",11b.sql,38695698b69dbcc55ab609cdb5b13e1182127adea2b761c3ea9e2330e7a84927
+11c,"SELECT MIN(cn.name) AS from_company,
+       MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_based_on_book
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '20th Century Fox%'
+       OR cn.name LIKE 'Twentieth Century Fox%')
+  AND ct.kind != 'production companies'
+  AND ct.kind IS NOT NULL
+  AND k.keyword IN ('sequel',
+                    'revenge',
+                    'based-on-novel')
+  AND mc.note IS NOT NULL
+  AND t.production_year > 1950
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id;",11c.sql,2d0d7040e322b74ffb48d648463a0292beb0c4d363ebddb531a8d2a0e75ea127
+11d,"SELECT MIN(cn.name) AS from_company,
+       MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_based_on_book
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND ct.kind != 'production companies'
+  AND ct.kind IS NOT NULL
+  AND k.keyword IN ('sequel',
+                    'revenge',
+                    'based-on-novel')
+  AND mc.note IS NOT NULL
+  AND t.production_year > 1950
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id;",11d.sql,9f3d08a09c46eb835fb3e946d1e6c22730079cfcee5dab7bf3e9a056b95a4d4e
+12a,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS drama_horror_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND ct.kind = 'production companies'
+  AND it1.info = 'genres'
+  AND it2.info = 'rating'
+  AND mi.info IN ('Drama',
+                  'Horror')
+  AND mi_idx.info > '8.0'
+  AND t.production_year BETWEEN 2005 AND 2008
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mi.info_type_id = it1.id
+  AND mi_idx.info_type_id = it2.id
+  AND t.id = mc.movie_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id;",12a.sql,871ec385dd6e28440d15b03cf0fdd9c9376b3453bb8ec552c4e5eb1e2afdbeb8
+12b,"SELECT MIN(mi.info) AS budget,
+       MIN(t.title) AS unsuccsessful_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND ct.kind IS NOT NULL
+  AND (ct.kind ='production companies'
+       OR ct.kind = 'distributors')
+  AND it1.info ='budget'
+  AND it2.info ='bottom 10 rank'
+  AND t.production_year >2000
+  AND (t.title LIKE 'Birdemic%'
+       OR t.title LIKE '%Movie%')
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mi.info_type_id = it1.id
+  AND mi_idx.info_type_id = it2.id
+  AND t.id = mc.movie_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id;",12b.sql,cdfa0891b60af9ef3bde65e85556a87d027557a89aa7ad6eec91366cacd6ca5f
+12c,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS mainstream_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND ct.kind = 'production companies'
+  AND it1.info = 'genres'
+  AND it2.info = 'rating'
+  AND mi.info IN ('Drama',
+                  'Horror',
+                  'Western',
+                  'Family')
+  AND mi_idx.info > '7.0'
+  AND t.production_year BETWEEN 2000 AND 2010
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mi.info_type_id = it1.id
+  AND mi_idx.info_type_id = it2.id
+  AND t.id = mc.movie_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id;",12c.sql,19d286824b7efb84aaa9371dbf1e842d5488e70f264a23c2c944c47f819e26c2
+13a,"SELECT MIN(mi.info) AS release_date,
+       MIN(miidx.info) AS rating,
+       MIN(t.title) AS german_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it,
+     info_type AS it2,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS miidx,
+     title AS t
+WHERE cn.country_code ='[de]'
+  AND ct.kind ='production companies'
+  AND it.info ='rating'
+  AND it2.info ='release dates'
+  AND kt.kind ='movie'
+  AND mi.movie_id = t.id
+  AND it2.id = mi.info_type_id
+  AND kt.id = t.kind_id
+  AND mc.movie_id = t.id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND miidx.movie_id = t.id
+  AND it.id = miidx.info_type_id
+  AND mi.movie_id = miidx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND miidx.movie_id = mc.movie_id;",13a.sql,c7d5c4fa1a5eb37bc327f531c4fe49fa4b8e2fe2ad251938880cafb3c191553d
+13b,"SELECT MIN(cn.name) AS producing_company,
+       MIN(miidx.info) AS rating,
+       MIN(t.title) AS movie_about_winning
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it,
+     info_type AS it2,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS miidx,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND ct.kind ='production companies'
+  AND it.info ='rating'
+  AND it2.info ='release dates'
+  AND kt.kind ='movie'
+  AND t.title != ''
+  AND (t.title LIKE '%Champion%'
+       OR t.title LIKE '%Loser%')
+  AND mi.movie_id = t.id
+  AND it2.id = mi.info_type_id
+  AND kt.id = t.kind_id
+  AND mc.movie_id = t.id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND miidx.movie_id = t.id
+  AND it.id = miidx.info_type_id
+  AND mi.movie_id = miidx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND miidx.movie_id = mc.movie_id;",13b.sql,cfc30b5bc8a2d513a060f8f58c12aeb61e17526bf4ba1921de40122197341b98
+13c,"SELECT MIN(cn.name) AS producing_company,
+       MIN(miidx.info) AS rating,
+       MIN(t.title) AS movie_about_winning
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it,
+     info_type AS it2,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS miidx,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND ct.kind ='production companies'
+  AND it.info ='rating'
+  AND it2.info ='release dates'
+  AND kt.kind ='movie'
+  AND t.title != ''
+  AND (t.title LIKE 'Champion%'
+       OR t.title LIKE 'Loser%')
+  AND mi.movie_id = t.id
+  AND it2.id = mi.info_type_id
+  AND kt.id = t.kind_id
+  AND mc.movie_id = t.id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND miidx.movie_id = t.id
+  AND it.id = miidx.info_type_id
+  AND mi.movie_id = miidx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND miidx.movie_id = mc.movie_id;",13c.sql,b61cbf84a4288c89c5494d812efed29b8a39c60dc637e37c9dedbb5fdfa2a2e0
+13d,"SELECT MIN(cn.name) AS producing_company,
+       MIN(miidx.info) AS rating,
+       MIN(t.title) AS movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it,
+     info_type AS it2,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS miidx,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND ct.kind ='production companies'
+  AND it.info ='rating'
+  AND it2.info ='release dates'
+  AND kt.kind ='movie'
+  AND mi.movie_id = t.id
+  AND it2.id = mi.info_type_id
+  AND kt.id = t.kind_id
+  AND mc.movie_id = t.id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND miidx.movie_id = t.id
+  AND it.id = miidx.info_type_id
+  AND mi.movie_id = miidx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND miidx.movie_id = mc.movie_id;",13d.sql,871c9d8cfa90f6299c4fb950df8c7550ee4c1fe5581c166304816c706915a8ba
+14a,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS northern_dark_movie
+FROM info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind = 'movie'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2010
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",14a.sql,0c6770d9c162dca23d0d32a5d9ed2d308fc2a1b3a673463d05c81ced8445f032
+14b,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS western_dark_production
+FROM info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title')
+  AND kt.kind = 'movie'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info > '6.0'
+  AND t.production_year > 2010
+  AND (t.title LIKE '%murder%'
+       OR t.title LIKE '%Murder%'
+       OR t.title LIKE '%Mord%')
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",14b.sql,6878ded3d9334f2ab68c33d10ed72e912db9407babe6547469c66d2c1bb246fe
+14c,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS north_european_dark_production
+FROM info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IS NOT NULL
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Danish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",14c.sql,cfeef4c875e3de99c575766bd17d613af1ee59e1588a2b5460e710d13bf87d7b
+15a,"SELECT MIN(mi.info) AS release_date,
+       MIN(t.title) AS internet_movie
+FROM aka_title AS at,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND mc.note LIKE '%(200%)%'
+  AND mc.note LIKE '%(worldwide)%'
+  AND mi.note LIKE '%internet%'
+  AND mi.info LIKE 'USA:% 200%'
+  AND t.production_year > 2000
+  AND t.id = at.movie_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = at.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = at.movie_id
+  AND mc.movie_id = at.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",15a.sql,c332055a7b8e19fcbdf3eac68f6797432ffd67d87a10267a5241d0769f0a8a0d
+15b,"SELECT MIN(mi.info) AS release_date,
+       MIN(t.title) AS youtube_movie
+FROM aka_title AS at,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND cn.name = 'YouTube'
+  AND it1.info = 'release dates'
+  AND mc.note LIKE '%(200%)%'
+  AND mc.note LIKE '%(worldwide)%'
+  AND mi.note LIKE '%internet%'
+  AND mi.info LIKE 'USA:% 200%'
+  AND t.production_year BETWEEN 2005 AND 2010
+  AND t.id = at.movie_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = at.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = at.movie_id
+  AND mc.movie_id = at.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",15b.sql,ad3c98ba9ba0798ac5a061038d5a2a49158a196575377a21858c8b8189e551ba
+15c,"SELECT MIN(mi.info) AS release_date,
+       MIN(t.title) AS modern_american_internet_movie
+FROM aka_title AS at,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND mi.note LIKE '%internet%'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'USA:% 199%'
+       OR mi.info LIKE 'USA:% 200%')
+  AND t.production_year > 1990
+  AND t.id = at.movie_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = at.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = at.movie_id
+  AND mc.movie_id = at.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",15c.sql,875e39117606a49cdb45e2ebb57261efe38ed9f786f8cae345cf620b33dd8ca1
+15d,"SELECT MIN(at.title) AS aka_title,
+       MIN(t.title) AS internet_movie_title
+FROM aka_title AS at,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND mi.note LIKE '%internet%'
+  AND t.production_year > 1990
+  AND t.id = at.movie_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = at.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = at.movie_id
+  AND mc.movie_id = at.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id;",15d.sql,d052c7260a0fe10db83e108f25bc7a7488f82fa64d1963b9210af5799e2c36b4
+16a,"SELECT MIN(an.name) AS cool_actor_pseudonym,
+       MIN(t.title) AS series_named_after_char
+FROM aka_name AS an,
+     cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND t.episode_nr >= 50
+  AND t.episode_nr < 100
+  AND an.person_id = n.id
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",16a.sql,43cd687d2b4005c6b665762dbf7e5277135ebe738d82e672371571ca255902b9
+16b,"SELECT MIN(an.name) AS cool_actor_pseudonym,
+       MIN(t.title) AS series_named_after_char
+FROM aka_name AS an,
+     cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND an.person_id = n.id
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",16b.sql,d65807d6a5dc9b37b5e484f7c57f2b469f9bd2b9e446704badb66ab29bb3a6ed
+16c,"SELECT MIN(an.name) AS cool_actor_pseudonym,
+       MIN(t.title) AS series_named_after_char
+FROM aka_name AS an,
+     cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND t.episode_nr < 100
+  AND an.person_id = n.id
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",16c.sql,85d9b65cd520f9edc7e14c0c4e39e05cc364b3f8c4ab30de07f7c343227c8edd
+16d,"SELECT MIN(an.name) AS cool_actor_pseudonym,
+       MIN(t.title) AS series_named_after_char
+FROM aka_name AS an,
+     cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND t.episode_nr >= 5
+  AND t.episode_nr < 100
+  AND an.person_id = n.id
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",16d.sql,83e7744d08279ea388a184256ab2deb8bf3c05fb93679c320fb508d10be32293
+17a,"SELECT MIN(n.name) AS member_in_charnamed_american_movie,
+       MIN(n.name) AS a1
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND n.name LIKE 'B%'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17a.sql,a52d479958ec18149f197df005f183f8cee35712398524f344b9751c9dce9fe2
+17b,"SELECT MIN(n.name) AS member_in_charnamed_movie,
+       MIN(n.name) AS a1
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword ='character-name-in-title'
+  AND n.name LIKE 'Z%'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17b.sql,da2f53d30ace326f7110861e21884165707975234072f5bdd2fff9032833f889
+17c,"SELECT MIN(n.name) AS member_in_charnamed_movie,
+       MIN(n.name) AS a1
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword ='character-name-in-title'
+  AND n.name LIKE 'X%'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17c.sql,56b241e6789c1f20b49b9cf8957154550af396b9bf6913aff974939e2f7fb7e9
+17d,"SELECT MIN(n.name) AS member_in_charnamed_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword ='character-name-in-title'
+  AND n.name LIKE '%Bert%'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17d.sql,0dfa90692bd83e530058a329a5ee035d7bcf7d7c0d7ddba43eb6f8ba87a04601
+17e,"SELECT MIN(n.name) AS member_in_charnamed_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17e.sql,6723e52c994de2ecec2f9f0aa0cbfd9e471a15b3055905dfdabc0520ca7fe0de
+17f,"SELECT MIN(n.name) AS member_in_charnamed_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword ='character-name-in-title'
+  AND n.name LIKE '%B%'
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.movie_id = mc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mc.movie_id = mk.movie_id;",17f.sql,a03f4e3c87d842f9ac27602b01fd0c40db7f1756afb9679d40cbc3c99d553da4
+18a,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(t.title) AS movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(producer)',
+                  '(executive producer)')
+  AND it1.info = 'budget'
+  AND it2.info = 'votes'
+  AND n.gender = 'm'
+  AND n.name LIKE '%Tim%'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",18a.sql,04816db9a582e138e9d1b2af9491520f42fa84307cf9abf3395f9c697f02d21e
+18b,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(t.title) AS movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'rating'
+  AND mi.info IN ('Horror',
+                  'Thriller')
+  AND mi.note IS NULL
+  AND mi_idx.info > '8.0'
+  AND n.gender IS NOT NULL
+  AND n.gender = 'f'
+  AND t.production_year BETWEEN 2008 AND 2014
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",18b.sql,920582b900c1206a1eba63c935492109c108927b75bd548b7fe6229d8d879f0a
+18c,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(t.title) AS movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND mi.info IN ('Horror',
+                  'Action',
+                  'Sci-Fi',
+                  'Thriller',
+                  'Crime',
+                  'War')
+  AND n.gender = 'm'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id;",18c.sql,3247d00269cadb278d9a417b805b928b609db6e49011f981482612434dc623a9
+19a,"SELECT MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS voiced_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND mc.note IS NOT NULL
+  AND (mc.note LIKE '%(USA)%'
+       OR mc.note LIKE '%(worldwide)%')
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%200%'
+       OR mi.info LIKE 'USA:%200%')
+  AND n.gender ='f'
+  AND n.name LIKE '%Ang%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2005 AND 2009
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id;",19a.sql,de0e1cae5dd400d5fc0b2954eaa41616861e76e1f4a45bbf923a8b94660fee53
+19b,"SELECT MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS kung_fu_panda
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note = '(voice)'
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND mc.note LIKE '%(200%)%'
+  AND (mc.note LIKE '%(USA)%'
+       OR mc.note LIKE '%(worldwide)%')
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%2007%'
+       OR mi.info LIKE 'USA:%2008%')
+  AND n.gender ='f'
+  AND n.name LIKE '%Angel%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2007 AND 2008
+  AND t.title LIKE '%Kung%Fu%Panda%'
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id;",19b.sql,2148cf91cbf25063f906086d1944a00f73d5b07e5076a9f1ed8bb4712fb12807
+19c,"SELECT MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS jap_engl_voiced_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%200%'
+       OR mi.info LIKE 'USA:%200%')
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.production_year > 2000
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id;",19c.sql,fe5b602cc75a95ba14f4694bfbe5d8082c405aa0881a5e3e2c259ed5e0f9e8df
+19d,"SELECT MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS jap_engl_voiced_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND n.gender ='f'
+  AND rt.role ='actress'
+  AND t.production_year > 2000
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id;",19d.sql,f450bd39710978c8bfbf961587cb3649190effe724855e6345bcf86d42ad39dc
+1a,"SELECT MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_title,
+       MIN(t.production_year) AS movie_year
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND it.info = 'top 250 rank'
+  AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%'
+  AND (mc.note LIKE '%(co-production)%'
+       OR mc.note LIKE '%(presents)%')
+  AND ct.id = mc.company_type_id
+  AND t.id = mc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND it.id = mi_idx.info_type_id;",1a.sql,53a90dac948641a2f9dd1ee12b68c66354d4c44016494d9e460b2b1879c5d7b2
+1b,"SELECT MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_title,
+       MIN(t.production_year) AS movie_year
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND it.info = 'bottom 10 rank'
+  AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%'
+  AND t.production_year BETWEEN 2005 AND 2010
+  AND ct.id = mc.company_type_id
+  AND t.id = mc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND it.id = mi_idx.info_type_id;",1b.sql,3f6bc4f99b49862e63aa9f0881abad66c9a4c63a96f3c6dca722d6f007854d29
+1c,"SELECT MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_title,
+       MIN(t.production_year) AS movie_year
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND it.info = 'top 250 rank'
+  AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%'
+  AND (mc.note LIKE '%(co-production)%')
+  AND t.production_year >2010
+  AND ct.id = mc.company_type_id
+  AND t.id = mc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND it.id = mi_idx.info_type_id;",1c.sql,2111c8a7ecbdba7f4b9ce943c102e6da789df5337f1f0c90be310afe578f84bb
+1d,"SELECT MIN(mc.note) AS production_note,
+       MIN(t.title) AS movie_title,
+       MIN(t.production_year) AS movie_year
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info_idx AS mi_idx,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND it.info = 'bottom 10 rank'
+  AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%'
+  AND t.production_year >2000
+  AND ct.id = mc.company_type_id
+  AND t.id = mc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND it.id = mi_idx.info_type_id;",1d.sql,cb8a207ee5459e05a77e9428efcdca946178c893f9c7a45dcba495427a185757
+20a,"SELECT MIN(t.title) AS complete_downey_ironman_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     keyword AS k,
+     kind_type AS kt,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name NOT LIKE '%Sherlock%'
+  AND (chn.name LIKE '%Tony%Stark%'
+       OR chn.name LIKE '%Iron%Man%')
+  AND k.keyword IN ('superhero',
+                    'sequel',
+                    'second-part',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence')
+  AND kt.kind = 'movie'
+  AND t.production_year > 1950
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",20a.sql,eea79cc4c815789c64bf7f4306e8e30db85289a8938bbcd012cb22388264067f
+20b,"SELECT MIN(t.title) AS complete_downey_ironman_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     keyword AS k,
+     kind_type AS kt,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name NOT LIKE '%Sherlock%'
+  AND (chn.name LIKE '%Tony%Stark%'
+       OR chn.name LIKE '%Iron%Man%')
+  AND k.keyword IN ('superhero',
+                    'sequel',
+                    'second-part',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence')
+  AND kt.kind = 'movie'
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",20b.sql,36c7ddba787747bca16a6dcb63ad50fba60f766afe771e5d3555b71607b98298
+20c,"SELECT MIN(n.name) AS cast_member,
+       MIN(t.title) AS complete_dynamic_hero_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     keyword AS k,
+     kind_type AS kt,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name IS NOT NULL
+  AND (chn.name LIKE '%man%'
+       OR chn.name LIKE '%Man%')
+  AND k.keyword IN ('superhero',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence',
+                    'magnet',
+                    'web',
+                    'claw',
+                    'laser')
+  AND kt.kind = 'movie'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",20c.sql,86f02702929dee0430d2ba6e447d3454f518a09a0b9f5504dacf80a5753c5e89
+21a,"SELECT MIN(cn.name) AS company_name,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS western_follow_up
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German')
+  AND t.production_year BETWEEN 1950 AND 2000
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id;",21a.sql,c899a4175c318b17df6c253c53253a130efeed6e6d2230180b02e08e9dcba722
+21b,"SELECT MIN(cn.name) AS company_name,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS german_follow_up
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Germany',
+                  'German')
+  AND t.production_year BETWEEN 2000 AND 2010
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id;",21b.sql,33f2c3edf99b23a99ea819fb41a0ff63af19f3ffbcd6e98ed94d1decb1accb67
+21c,"SELECT MIN(cn.name) AS company_name,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS western_follow_up
+FROM company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'English')
+  AND t.production_year BETWEEN 1950 AND 2010
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id;",21c.sql,e62c4d11928d31a55a09fc2aef9bc3812e510f016ecc2463596a099a1c4a9366
+22a,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS western_violent_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Germany',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '7.0'
+  AND t.production_year > 2008
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id;",22a.sql,eec5b2d12dc15e51fb6bf5e83d13c0bc185ca150b4d75c07bda8eb57f861a29c
+22b,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS western_violent_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Germany',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '7.0'
+  AND t.production_year > 2009
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id;",22b.sql,819cce32cbcac10161aaeab26817e0136e0370bb4b9cbca5cc415172bfd0ff2c
+22c,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS western_violent_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Danish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id;",22c.sql,9401e4b3000f15cb9fd1a39abfda016c8f94f079c9cd8acc93d314a23e8890c5
+22d,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS western_violent_movie
+FROM company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Danish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id;",22d.sql,96691d9b9a24284e9fa6992ab4c83b285579a1f1a5cf7cf4bd943b6c1fc91a71
+23a,"SELECT MIN(kt.kind) AS movie_kind,
+       MIN(t.title) AS complete_us_internet_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'complete+verified'
+  AND cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND kt.kind IN ('movie')
+  AND mi.note LIKE '%internet%'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'USA:% 199%'
+       OR mi.info LIKE 'USA:% 200%')
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND cct1.id = cc.status_id;",23a.sql,0115941960633919edac315eb3e40d1df1953a66b93cbab316244018d2adcb09
+23b,"SELECT MIN(kt.kind) AS movie_kind,
+       MIN(t.title) AS complete_nerdy_internet_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'complete+verified'
+  AND cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND k.keyword IN ('nerd',
+                    'loner',
+                    'alienation',
+                    'dignity')
+  AND kt.kind IN ('movie')
+  AND mi.note LIKE '%internet%'
+  AND mi.info LIKE 'USA:% 200%'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND cct1.id = cc.status_id;",23b.sql,893cb0185455fb67072b934bf12158b9dc217bc9e3ffe680deabf84c53fbc713
+23c,"SELECT MIN(kt.kind) AS movie_kind,
+       MIN(t.title) AS complete_us_internet_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'complete+verified'
+  AND cn.country_code = '[us]'
+  AND it1.info = 'release dates'
+  AND kt.kind IN ('movie',
+                  'tv movie',
+                  'video movie',
+                  'video game')
+  AND mi.note LIKE '%internet%'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'USA:% 199%'
+       OR mi.info LIKE 'USA:% 200%')
+  AND t.production_year > 1990
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND cn.id = mc.company_id
+  AND ct.id = mc.company_type_id
+  AND cct1.id = cc.status_id;",23c.sql,93566f0155c4f6816b51eb71d52aecaec868a1b160c38b4643e5cb9780bc9c3d
+24a,"SELECT MIN(chn.name) AS voiced_char_name,
+       MIN(n.name) AS voicing_actress_name,
+       MIN(t.title) AS voiced_action_movie_jap_eng
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND k.keyword IN ('hero',
+                    'martial-arts',
+                    'hand-to-hand-combat')
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%201%'
+       OR mi.info LIKE 'USA:%201%')
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.production_year > 2010
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mk.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id
+  AND k.id = mk.keyword_id;",24a.sql,2364e4924f1ad3a81b07420e6d5310d3220df7474c5b11b50ed062e884daf480
+24b,"SELECT MIN(chn.name) AS voiced_char_name,
+       MIN(n.name) AS voicing_actress_name,
+       MIN(t.title) AS kung_fu_panda
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND cn.name = 'DreamWorks Animation'
+  AND it.info = 'release dates'
+  AND k.keyword IN ('hero',
+                    'martial-arts',
+                    'hand-to-hand-combat',
+                    'computer-animated-movie')
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%201%'
+       OR mi.info LIKE 'USA:%201%')
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.production_year > 2010
+  AND t.title LIKE 'Kung Fu Panda%'
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mk.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id
+  AND k.id = mk.keyword_id;",24b.sql,199711fb4c5f118e67fbd926218b66cb96a8c2530668bc43fbe812af2a658314
+25a,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS male_writer,
+       MIN(t.title) AS violent_movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity')
+  AND mi.info = 'Horror'
+  AND n.gender = 'm'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id;",25a.sql,643c0557c8d898467d56c492ff7b0ebe4ebacaa6131af16e0b22f26ba9f21ace
+25b,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS male_writer,
+       MIN(t.title) AS violent_movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity')
+  AND mi.info = 'Horror'
+  AND n.gender = 'm'
+  AND t.production_year > 2010
+  AND t.title LIKE 'Vampire%'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id;",25b.sql,aad58fb332fd9c7c8a67067086dbc32b7884e252435bf17d3c0fbcd69d5cbae1
+25c,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS male_writer,
+       MIN(t.title) AS violent_movie_title
+FROM cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Action',
+                  'Sci-Fi',
+                  'Thriller',
+                  'Crime',
+                  'War')
+  AND n.gender = 'm'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id;",25c.sql,4a33e40c4c643d39a8d5933a4d2960a8a3f2a100e5a063ac2c20f8b007d8e5f8
+26a,"SELECT MIN(chn.name) AS character_name,
+       MIN(mi_idx.info) AS rating,
+       MIN(n.name) AS playing_actor,
+       MIN(t.title) AS complete_hero_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name IS NOT NULL
+  AND (chn.name LIKE '%man%'
+       OR chn.name LIKE '%Man%')
+  AND it2.info = 'rating'
+  AND k.keyword IN ('superhero',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence',
+                    'magnet',
+                    'web',
+                    'claw',
+                    'laser')
+  AND kt.kind = 'movie'
+  AND mi_idx.info > '7.0'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND cc.movie_id = mi_idx.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND it2.id = mi_idx.info_type_id;",26a.sql,e68db6c6477fcd41adde48510c3eaec1765ad13fa9e6b899348dc996f6a589cc
+26b,"SELECT MIN(chn.name) AS character_name,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS complete_hero_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name IS NOT NULL
+  AND (chn.name LIKE '%man%'
+       OR chn.name LIKE '%Man%')
+  AND it2.info = 'rating'
+  AND k.keyword IN ('superhero',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'fight')
+  AND kt.kind = 'movie'
+  AND mi_idx.info > '8.0'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND cc.movie_id = mi_idx.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND it2.id = mi_idx.info_type_id;",26b.sql,b0393215e99a169caa77ba893beed022e1090c9044cc412c304a31b24370f242
+26c,"SELECT MIN(chn.name) AS character_name,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS complete_hero_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE '%complete%'
+  AND chn.name IS NOT NULL
+  AND (chn.name LIKE '%man%'
+       OR chn.name LIKE '%Man%')
+  AND it2.info = 'rating'
+  AND k.keyword IN ('superhero',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence',
+                    'magnet',
+                    'web',
+                    'claw',
+                    'laser')
+  AND kt.kind = 'movie'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = cc.movie_id
+  AND t.id = mi_idx.movie_id
+  AND mk.movie_id = ci.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND cc.movie_id = mi_idx.movie_id
+  AND chn.id = ci.person_role_id
+  AND n.id = ci.person_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND it2.id = mi_idx.info_type_id;",26c.sql,afd4656f06cdad04640e6ccf4db24cc251954689da270e9de259c89825d50404
+27a,"SELECT MIN(cn.name) AS producing_company,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS complete_western_sequel
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cct1.kind IN ('cast',
+                    'crew')
+  AND cct2.kind = 'complete'
+  AND cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Sweden',
+                  'Germany',
+                  'Swedish',
+                  'German')
+  AND t.production_year BETWEEN 1950 AND 2000
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND t.id = cc.movie_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ml.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = cc.movie_id;",27a.sql,b470129ed757160c21317ecd59d0fd71a3aac72052c2472a43f3007170cd6d0d
+27b,"SELECT MIN(cn.name) AS producing_company,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS complete_western_sequel
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cct1.kind IN ('cast',
+                    'crew')
+  AND cct2.kind = 'complete'
+  AND cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Sweden',
+                  'Germany',
+                  'Swedish',
+                  'German')
+  AND t.production_year = 1998
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND t.id = cc.movie_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ml.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = cc.movie_id;",27b.sql,5e807f3f664f140b3bbe7637036c8bd85183ad9343b9e18d4dde49a4b30751d6
+27c,"SELECT MIN(cn.name) AS producing_company,
+       MIN(lt.link) AS link_type,
+       MIN(t.title) AS complete_western_sequel
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     keyword AS k,
+     link_type AS lt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind LIKE 'complete%'
+  AND cn.country_code !='[pl]'
+  AND (cn.name LIKE '%Film%'
+       OR cn.name LIKE '%Warner%')
+  AND ct.kind ='production companies'
+  AND k.keyword ='sequel'
+  AND lt.link LIKE '%follow%'
+  AND mc.note IS NULL
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'English')
+  AND t.production_year BETWEEN 1950 AND 2010
+  AND lt.id = ml.link_type_id
+  AND ml.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND t.id = mc.movie_id
+  AND mc.company_type_id = ct.id
+  AND mc.company_id = cn.id
+  AND mi.movie_id = t.id
+  AND t.id = cc.movie_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id
+  AND ml.movie_id = mk.movie_id
+  AND ml.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND ml.movie_id = mi.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ml.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = cc.movie_id;",27c.sql,1d00d9231b2b3d9e379c5e0788fdb38e49c42bc2a73398d9588385022105cdac
+28a,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS complete_euro_dark_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'crew'
+  AND cct2.kind != 'complete+verified'
+  AND cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Danish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2000
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",28a.sql,f4d032f672de59f119453a2f948717e1c88dbd2358e1fb5186ca295030eac9d1
+28b,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS complete_euro_dark_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'crew'
+  AND cct2.kind != 'complete+verified'
+  AND cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Sweden',
+                  'Germany',
+                  'Swedish',
+                  'German')
+  AND mi_idx.info > '6.5'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",28b.sql,a0f8a1130ecd9954c3acb5058e91d436edeab93bff589823d8cb58dae83ae14c
+28c,"SELECT MIN(cn.name) AS movie_company,
+       MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS complete_euro_dark_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     company_name AS cn,
+     company_type AS ct,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     kind_type AS kt,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind = 'complete'
+  AND cn.country_code != '[us]'
+  AND it1.info = 'countries'
+  AND it2.info = 'rating'
+  AND k.keyword IN ('murder',
+                    'murder-in-title',
+                    'blood',
+                    'violence')
+  AND kt.kind IN ('movie',
+                  'episode')
+  AND mc.note NOT LIKE '%(USA)%'
+  AND mc.note LIKE '%(200%)%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Danish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND mi_idx.info < '8.5'
+  AND t.production_year > 2005
+  AND kt.id = t.kind_id
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = cc.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mc.movie_id = mi_idx.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND k.id = mk.keyword_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND ct.id = mc.company_type_id
+  AND cn.id = mc.company_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",28c.sql,8a5d2826e0d8edada1aa3afb1266e4988fc17ffa5cd0ccfa5b3410258958d7b5
+29a,"SELECT MIN(chn.name) AS voiced_char,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS voiced_animation
+FROM aka_name AS an,
+     complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     info_type AS it3,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     name AS n,
+     person_info AS pi,
+     role_type AS rt,
+     title AS t
+WHERE cct1.kind ='cast'
+  AND cct2.kind ='complete+verified'
+  AND chn.name = 'Queen'
+  AND ci.note IN ('(voice)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND it3.info = 'trivia'
+  AND k.keyword = 'computer-animation'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%200%'
+       OR mi.info LIKE 'USA:%200%')
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.title = 'Shrek 2'
+  AND t.production_year BETWEEN 2000 AND 2010
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mk.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id
+  AND n.id = pi.person_id
+  AND ci.person_id = pi.person_id
+  AND it3.id = pi.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",29a.sql,a693c52de057655e421c2ab5569503ac54da257653dcb0cde8020eef027b5c96
+29b,"SELECT MIN(chn.name) AS voiced_char,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS voiced_animation
+FROM aka_name AS an,
+     complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     info_type AS it3,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     name AS n,
+     person_info AS pi,
+     role_type AS rt,
+     title AS t
+WHERE cct1.kind ='cast'
+  AND cct2.kind ='complete+verified'
+  AND chn.name = 'Queen'
+  AND ci.note IN ('(voice)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND it3.info = 'height'
+  AND k.keyword = 'computer-animation'
+  AND mi.info LIKE 'USA:%200%'
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.title = 'Shrek 2'
+  AND t.production_year BETWEEN 2000 AND 2005
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mk.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id
+  AND n.id = pi.person_id
+  AND ci.person_id = pi.person_id
+  AND it3.id = pi.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",29b.sql,a43ad7b45d9e01c7983b565c229356722e3f7028faecee48d66b5d7546181772
+29c,"SELECT MIN(chn.name) AS voiced_char,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS voiced_animation
+FROM aka_name AS an,
+     complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     info_type AS it,
+     info_type AS it3,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     name AS n,
+     person_info AS pi,
+     role_type AS rt,
+     title AS t
+WHERE cct1.kind ='cast'
+  AND cct2.kind ='complete+verified'
+  AND ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND it.info = 'release dates'
+  AND it3.info = 'trivia'
+  AND k.keyword = 'computer-animation'
+  AND mi.info IS NOT NULL
+  AND (mi.info LIKE 'Japan:%200%'
+       OR mi.info LIKE 'USA:%200%')
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2000 AND 2010
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND mc.movie_id = ci.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND mc.movie_id = mk.movie_id
+  AND mc.movie_id = cc.movie_id
+  AND mi.movie_id = ci.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND cn.id = mc.company_id
+  AND it.id = mi.info_type_id
+  AND n.id = ci.person_id
+  AND rt.id = ci.role_id
+  AND n.id = an.person_id
+  AND ci.person_id = an.person_id
+  AND chn.id = ci.person_role_id
+  AND n.id = pi.person_id
+  AND ci.person_id = pi.person_id
+  AND it3.id = pi.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",29c.sql,b338eb16c2ff5a5022ef609b9a77e6c4ef76a9771eca8de5785aef382ea33078
+2a,"SELECT MIN(t.title) AS movie_title
+FROM company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code ='[de]'
+  AND k.keyword ='character-name-in-title'
+  AND cn.id = mc.company_id
+  AND mc.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND mc.movie_id = mk.movie_id;",2a.sql,71f44856563aa35d2e2612c24c80c4d67003412dbdd87fa2612a899fee6d6d9e
+2b,"SELECT MIN(t.title) AS movie_title
+FROM company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code ='[nl]'
+  AND k.keyword ='character-name-in-title'
+  AND cn.id = mc.company_id
+  AND mc.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND mc.movie_id = mk.movie_id;",2b.sql,0da8ea6095c1550ce82aff78ecb3f6d0a46a3915aede853338a77eefef529e83
+2c,"SELECT MIN(t.title) AS movie_title
+FROM company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code ='[sm]'
+  AND k.keyword ='character-name-in-title'
+  AND cn.id = mc.company_id
+  AND mc.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND mc.movie_id = mk.movie_id;",2c.sql,bf101673a7e20c7eb85795e4b0c3c55a4ae94523c2f245e9e5645476d989fbbb
+2d,"SELECT MIN(t.title) AS movie_title
+FROM company_name AS cn,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_keyword AS mk,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND k.keyword ='character-name-in-title'
+  AND cn.id = mc.company_id
+  AND mc.movie_id = t.id
+  AND t.id = mk.movie_id
+  AND mk.keyword_id = k.id
+  AND mc.movie_id = mk.movie_id;",2d.sql,2d0c0b02fe1f59a4f6414461fde58befc0c51fe344ed72fef505747572354459
+30a,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS complete_violent_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind IN ('cast',
+                    'crew')
+  AND cct2.kind ='complete+verified'
+  AND ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Thriller')
+  AND n.gender = 'm'
+  AND t.production_year > 2000
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",30a.sql,9ec9bb8b2521099af76e45201b970cc4373478ad8c0eb0323a4a02068751c802
+30b,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS complete_gore_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind IN ('cast',
+                    'crew')
+  AND cct2.kind ='complete+verified'
+  AND ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Thriller')
+  AND n.gender = 'm'
+  AND t.production_year > 2000
+  AND (t.title LIKE '%Freddy%'
+       OR t.title LIKE '%Jason%'
+       OR t.title LIKE 'Saw%')
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",30b.sql,6294013729f3373603d5dd24e49df10a3f87f51c883054d19e7112c493a91e3f
+30c,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS complete_violent_movie
+FROM complete_cast AS cc,
+     comp_cast_type AS cct1,
+     comp_cast_type AS cct2,
+     cast_info AS ci,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE cct1.kind = 'cast'
+  AND cct2.kind ='complete+verified'
+  AND ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Action',
+                  'Sci-Fi',
+                  'Thriller',
+                  'Crime',
+                  'War')
+  AND n.gender = 'm'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = cc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = cc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = cc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = cc.movie_id
+  AND mk.movie_id = cc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cct1.id = cc.subject_id
+  AND cct2.id = cc.status_id;",30c.sql,1fc2c1125858123d908e2808f46471a76c0e1e787161e88e32670c15b1da6d8e
+31a,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS violent_liongate_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND cn.name LIKE 'Lionsgate%'
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Thriller')
+  AND n.gender = 'm'
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cn.id = mc.company_id;",31a.sql,dd779ae7e005300c9af6fd006ab07ff93d75cdd766df13467b73955271a6e02b
+31b,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS violent_liongate_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND cn.name LIKE 'Lionsgate%'
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mc.note LIKE '%(Blu-ray)%'
+  AND mi.info IN ('Horror',
+                  'Thriller')
+  AND n.gender = 'm'
+  AND t.production_year > 2000
+  AND (t.title LIKE '%Freddy%'
+       OR t.title LIKE '%Jason%'
+       OR t.title LIKE 'Saw%')
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cn.id = mc.company_id;",31b.sql,c97f5c77bede5ce118782f92c87a3dd05fd93d2453749860124ba19c77451d51
+31c,"SELECT MIN(mi.info) AS movie_budget,
+       MIN(mi_idx.info) AS movie_votes,
+       MIN(n.name) AS writer,
+       MIN(t.title) AS violent_liongate_movie
+FROM cast_info AS ci,
+     company_name AS cn,
+     info_type AS it1,
+     info_type AS it2,
+     keyword AS k,
+     movie_companies AS mc,
+     movie_info AS mi,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE ci.note IN ('(writer)',
+                  '(head writer)',
+                  '(written by)',
+                  '(story)',
+                  '(story editor)')
+  AND cn.name LIKE 'Lionsgate%'
+  AND it1.info = 'genres'
+  AND it2.info = 'votes'
+  AND k.keyword IN ('murder',
+                    'violence',
+                    'blood',
+                    'gore',
+                    'death',
+                    'female-nudity',
+                    'hospital')
+  AND mi.info IN ('Horror',
+                  'Action',
+                  'Sci-Fi',
+                  'Thriller',
+                  'Crime',
+                  'War')
+  AND t.id = mi.movie_id
+  AND t.id = mi_idx.movie_id
+  AND t.id = ci.movie_id
+  AND t.id = mk.movie_id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mi.movie_id
+  AND ci.movie_id = mi_idx.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mi.movie_id = mi_idx.movie_id
+  AND mi.movie_id = mk.movie_id
+  AND mi.movie_id = mc.movie_id
+  AND mi_idx.movie_id = mk.movie_id
+  AND mi_idx.movie_id = mc.movie_id
+  AND mk.movie_id = mc.movie_id
+  AND n.id = ci.person_id
+  AND it1.id = mi.info_type_id
+  AND it2.id = mi_idx.info_type_id
+  AND k.id = mk.keyword_id
+  AND cn.id = mc.company_id;",31c.sql,8064d891a412b1d953c11b8b8c60d5666c3e017aa3048dc29e1648e393d984b3
+32a,"SELECT MIN(lt.link) AS link_type,
+       MIN(t1.title) AS first_movie,
+       MIN(t2.title) AS second_movie
+FROM keyword AS k,
+     link_type AS lt,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t1,
+     title AS t2
+WHERE k.keyword ='10,000-mile-club'
+  AND mk.keyword_id = k.id
+  AND t1.id = mk.movie_id
+  AND ml.movie_id = t1.id
+  AND ml.linked_movie_id = t2.id
+  AND lt.id = ml.link_type_id
+  AND mk.movie_id = t1.id;",32a.sql,920bf48d8f22cb80a07f4d6d1567614fc6ca269487e18e4a897c72443529427b
+32b,"SELECT MIN(lt.link) AS link_type,
+       MIN(t1.title) AS first_movie,
+       MIN(t2.title) AS second_movie
+FROM keyword AS k,
+     link_type AS lt,
+     movie_keyword AS mk,
+     movie_link AS ml,
+     title AS t1,
+     title AS t2
+WHERE k.keyword ='character-name-in-title'
+  AND mk.keyword_id = k.id
+  AND t1.id = mk.movie_id
+  AND ml.movie_id = t1.id
+  AND ml.linked_movie_id = t2.id
+  AND lt.id = ml.link_type_id
+  AND mk.movie_id = t1.id;",32b.sql,b8bb4489b603250702299fe3a8eb763a514f2fa42568524a2d486f692b7d0eb7
+33a,"SELECT MIN(cn1.name) AS first_company,
+       MIN(cn2.name) AS second_company,
+       MIN(mi_idx1.info) AS first_rating,
+       MIN(mi_idx2.info) AS second_rating,
+       MIN(t1.title) AS first_movie,
+       MIN(t2.title) AS second_movie
+FROM company_name AS cn1,
+     company_name AS cn2,
+     info_type AS it1,
+     info_type AS it2,
+     kind_type AS kt1,
+     kind_type AS kt2,
+     link_type AS lt,
+     movie_companies AS mc1,
+     movie_companies AS mc2,
+     movie_info_idx AS mi_idx1,
+     movie_info_idx AS mi_idx2,
+     movie_link AS ml,
+     title AS t1,
+     title AS t2
+WHERE cn1.country_code = '[us]'
+  AND it1.info = 'rating'
+  AND it2.info = 'rating'
+  AND kt1.kind IN ('tv series')
+  AND kt2.kind IN ('tv series')
+  AND lt.link IN ('sequel',
+                  'follows',
+                  'followed by')
+  AND mi_idx2.info < '3.0'
+  AND t2.production_year BETWEEN 2005 AND 2008
+  AND lt.id = ml.link_type_id
+  AND t1.id = ml.movie_id
+  AND t2.id = ml.linked_movie_id
+  AND it1.id = mi_idx1.info_type_id
+  AND t1.id = mi_idx1.movie_id
+  AND kt1.id = t1.kind_id
+  AND cn1.id = mc1.company_id
+  AND t1.id = mc1.movie_id
+  AND ml.movie_id = mi_idx1.movie_id
+  AND ml.movie_id = mc1.movie_id
+  AND mi_idx1.movie_id = mc1.movie_id
+  AND it2.id = mi_idx2.info_type_id
+  AND t2.id = mi_idx2.movie_id
+  AND kt2.id = t2.kind_id
+  AND cn2.id = mc2.company_id
+  AND t2.id = mc2.movie_id
+  AND ml.linked_movie_id = mi_idx2.movie_id
+  AND ml.linked_movie_id = mc2.movie_id
+  AND mi_idx2.movie_id = mc2.movie_id;",33a.sql,16ec76ddb7fed9155cf98d85c3a6741cc75c1f08e45da9ffda3206a0d8215c2b
+33b,"SELECT MIN(cn1.name) AS first_company,
+       MIN(cn2.name) AS second_company,
+       MIN(mi_idx1.info) AS first_rating,
+       MIN(mi_idx2.info) AS second_rating,
+       MIN(t1.title) AS first_movie,
+       MIN(t2.title) AS second_movie
+FROM company_name AS cn1,
+     company_name AS cn2,
+     info_type AS it1,
+     info_type AS it2,
+     kind_type AS kt1,
+     kind_type AS kt2,
+     link_type AS lt,
+     movie_companies AS mc1,
+     movie_companies AS mc2,
+     movie_info_idx AS mi_idx1,
+     movie_info_idx AS mi_idx2,
+     movie_link AS ml,
+     title AS t1,
+     title AS t2
+WHERE cn1.country_code = '[nl]'
+  AND it1.info = 'rating'
+  AND it2.info = 'rating'
+  AND kt1.kind IN ('tv series')
+  AND kt2.kind IN ('tv series')
+  AND lt.link LIKE '%follow%'
+  AND mi_idx2.info < '3.0'
+  AND t2.production_year = 2007
+  AND lt.id = ml.link_type_id
+  AND t1.id = ml.movie_id
+  AND t2.id = ml.linked_movie_id
+  AND it1.id = mi_idx1.info_type_id
+  AND t1.id = mi_idx1.movie_id
+  AND kt1.id = t1.kind_id
+  AND cn1.id = mc1.company_id
+  AND t1.id = mc1.movie_id
+  AND ml.movie_id = mi_idx1.movie_id
+  AND ml.movie_id = mc1.movie_id
+  AND mi_idx1.movie_id = mc1.movie_id
+  AND it2.id = mi_idx2.info_type_id
+  AND t2.id = mi_idx2.movie_id
+  AND kt2.id = t2.kind_id
+  AND cn2.id = mc2.company_id
+  AND t2.id = mc2.movie_id
+  AND ml.linked_movie_id = mi_idx2.movie_id
+  AND ml.linked_movie_id = mc2.movie_id
+  AND mi_idx2.movie_id = mc2.movie_id;",33b.sql,89639c0c29423a3fe0d8bc4ddf3314ca83c4be72a09ec201c6cb14df0604ca5c
+33c,"SELECT MIN(cn1.name) AS first_company,
+       MIN(cn2.name) AS second_company,
+       MIN(mi_idx1.info) AS first_rating,
+       MIN(mi_idx2.info) AS second_rating,
+       MIN(t1.title) AS first_movie,
+       MIN(t2.title) AS second_movie
+FROM company_name AS cn1,
+     company_name AS cn2,
+     info_type AS it1,
+     info_type AS it2,
+     kind_type AS kt1,
+     kind_type AS kt2,
+     link_type AS lt,
+     movie_companies AS mc1,
+     movie_companies AS mc2,
+     movie_info_idx AS mi_idx1,
+     movie_info_idx AS mi_idx2,
+     movie_link AS ml,
+     title AS t1,
+     title AS t2
+WHERE cn1.country_code != '[us]'
+  AND it1.info = 'rating'
+  AND it2.info = 'rating'
+  AND kt1.kind IN ('tv series',
+                   'episode')
+  AND kt2.kind IN ('tv series',
+                   'episode')
+  AND lt.link IN ('sequel',
+                  'follows',
+                  'followed by')
+  AND mi_idx2.info < '3.5'
+  AND t2.production_year BETWEEN 2000 AND 2010
+  AND lt.id = ml.link_type_id
+  AND t1.id = ml.movie_id
+  AND t2.id = ml.linked_movie_id
+  AND it1.id = mi_idx1.info_type_id
+  AND t1.id = mi_idx1.movie_id
+  AND kt1.id = t1.kind_id
+  AND cn1.id = mc1.company_id
+  AND t1.id = mc1.movie_id
+  AND ml.movie_id = mi_idx1.movie_id
+  AND ml.movie_id = mc1.movie_id
+  AND mi_idx1.movie_id = mc1.movie_id
+  AND it2.id = mi_idx2.info_type_id
+  AND t2.id = mi_idx2.movie_id
+  AND kt2.id = t2.kind_id
+  AND cn2.id = mc2.company_id
+  AND t2.id = mc2.movie_id
+  AND ml.linked_movie_id = mi_idx2.movie_id
+  AND ml.linked_movie_id = mc2.movie_id
+  AND mi_idx2.movie_id = mc2.movie_id;",33c.sql,ad00e304413df75daefbde27f18872bcfc33f1bcc86a95c6dd133d4a5fc27f1d
+3a,"SELECT MIN(t.title) AS movie_title
+FROM keyword AS k,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE k.keyword LIKE '%sequel%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German')
+  AND t.production_year > 2005
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND k.id = mk.keyword_id;",3a.sql,09c04f1846b8b7d839d050b5719230e844e7612357dd749c59b37a7eb3cf9db2
+3b,"SELECT MIN(t.title) AS movie_title
+FROM keyword AS k,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE k.keyword LIKE '%sequel%'
+  AND mi.info IN ('Bulgaria')
+  AND t.production_year > 2010
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND k.id = mk.keyword_id;",3b.sql,a36ee625b0dbf5f7a82ebd6d558d374b1753054f8361e5cb4364badc6eb05ab9
+3c,"SELECT MIN(t.title) AS movie_title
+FROM keyword AS k,
+     movie_info AS mi,
+     movie_keyword AS mk,
+     title AS t
+WHERE k.keyword LIKE '%sequel%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND t.production_year > 1990
+  AND t.id = mi.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi.movie_id
+  AND k.id = mk.keyword_id;",3c.sql,ccfe237f533897b5666e7ee74ad6c8f36de19d6c0e0c537e8626b0c53791db6b
+4a,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS movie_title
+FROM info_type AS it,
+     keyword AS k,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it.info ='rating'
+  AND k.keyword LIKE '%sequel%'
+  AND mi_idx.info > '5.0'
+  AND t.production_year > 2005
+  AND t.id = mi_idx.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it.id = mi_idx.info_type_id;",4a.sql,c80e515f37a633adca3ab45bbd5cba20e760c80a71d7841b51e64154b1008065
+4b,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS movie_title
+FROM info_type AS it,
+     keyword AS k,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it.info ='rating'
+  AND k.keyword LIKE '%sequel%'
+  AND mi_idx.info > '9.0'
+  AND t.production_year > 2010
+  AND t.id = mi_idx.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it.id = mi_idx.info_type_id;",4b.sql,5e0a78655c8bf0714f365697ac2e9c4e12cc6d2096f625ff81baf33f499e6654
+4c,"SELECT MIN(mi_idx.info) AS rating,
+       MIN(t.title) AS movie_title
+FROM info_type AS it,
+     keyword AS k,
+     movie_info_idx AS mi_idx,
+     movie_keyword AS mk,
+     title AS t
+WHERE it.info ='rating'
+  AND k.keyword LIKE '%sequel%'
+  AND mi_idx.info > '2.0'
+  AND t.production_year > 1990
+  AND t.id = mi_idx.movie_id
+  AND t.id = mk.movie_id
+  AND mk.movie_id = mi_idx.movie_id
+  AND k.id = mk.keyword_id
+  AND it.id = mi_idx.info_type_id;",4c.sql,db79ff846ccde743ab3ae806a3047eab9c9417e45ca86272fafc43bd7422ecc4
+5a,"SELECT MIN(t.title) AS typical_european_movie
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND mc.note LIKE '%(theatrical)%'
+  AND mc.note LIKE '%(France)%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German')
+  AND t.production_year > 2005
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ct.id = mc.company_type_id
+  AND it.id = mi.info_type_id;",5a.sql,b78eed60ed4341b93d663a99ef4268d2f0c589c159a3a56d32027aee85d8f17c
+5b,"SELECT MIN(t.title) AS american_vhs_movie
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND mc.note LIKE '%(VHS)%'
+  AND mc.note LIKE '%(USA)%'
+  AND mc.note LIKE '%(1994)%'
+  AND mi.info IN ('USA',
+                  'America')
+  AND t.production_year > 2010
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ct.id = mc.company_type_id
+  AND it.id = mi.info_type_id;",5b.sql,ed0bcd17c29e612d1594693215f1a192ac954011ec2c0880a0ba7c0f159491cc
+5c,"SELECT MIN(t.title) AS american_movie
+FROM company_type AS ct,
+     info_type AS it,
+     movie_companies AS mc,
+     movie_info AS mi,
+     title AS t
+WHERE ct.kind = 'production companies'
+  AND mc.note NOT LIKE '%(TV)%'
+  AND mc.note LIKE '%(USA)%'
+  AND mi.info IN ('Sweden',
+                  'Norway',
+                  'Germany',
+                  'Denmark',
+                  'Swedish',
+                  'Denish',
+                  'Norwegian',
+                  'German',
+                  'USA',
+                  'American')
+  AND t.production_year > 1990
+  AND t.id = mi.movie_id
+  AND t.id = mc.movie_id
+  AND mc.movie_id = mi.movie_id
+  AND ct.id = mc.company_type_id
+  AND it.id = mi.info_type_id;",5c.sql,7f542875e1b5247a43f7c3aad51f8fe73431866245509a98f4b321247d1794fd
+6a,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS marvel_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword = 'marvel-cinematic-universe'
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2010
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6a.sql,666385ab792d62acef9442fc2884282d3f9194a172a6c0741544ab92eaa029b2
+6b,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS hero_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword IN ('superhero',
+                    'sequel',
+                    'second-part',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence')
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2014
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6b.sql,1510acb47c7b220b1328956345c9791c0d3857e06ed87a43d8fb2380c5b7d2e4
+6c,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS marvel_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword = 'marvel-cinematic-universe'
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2014
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6c.sql,4ca2c51e003a181a4099984c725328151248eed7ee708009e4d4cce2fb0cac2b
+6d,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS hero_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword IN ('superhero',
+                    'sequel',
+                    'second-part',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence')
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2000
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6d.sql,8138175c4f011b8582a62921492dcf7fe4555b17fc27d4f02a9c693b519b4786
+6e,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS marvel_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword = 'marvel-cinematic-universe'
+  AND n.name LIKE '%Downey%Robert%'
+  AND t.production_year > 2000
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6e.sql,03d81143246c44c4e59206d4c3960f4cfd85da1ee63d78f065c9cde1b9bc311a
+6f,"SELECT MIN(k.keyword) AS movie_keyword,
+       MIN(n.name) AS actor_name,
+       MIN(t.title) AS hero_movie
+FROM cast_info AS ci,
+     keyword AS k,
+     movie_keyword AS mk,
+     name AS n,
+     title AS t
+WHERE k.keyword IN ('superhero',
+                    'sequel',
+                    'second-part',
+                    'marvel-comics',
+                    'based-on-comic',
+                    'tv-special',
+                    'fight',
+                    'violence')
+  AND t.production_year > 2000
+  AND k.id = mk.keyword_id
+  AND t.id = mk.movie_id
+  AND t.id = ci.movie_id
+  AND ci.movie_id = mk.movie_id
+  AND n.id = ci.person_id;",6f.sql,95279032832884404c90dcc043c61fb38f70f74d470d7598f4f00bd1532b96a0
+7a,"SELECT MIN(n.name) AS of_person,
+       MIN(t.title) AS biography_movie
+FROM aka_name AS an,
+     cast_info AS ci,
+     info_type AS it,
+     link_type AS lt,
+     movie_link AS ml,
+     name AS n,
+     person_info AS pi,
+     title AS t
+WHERE an.name LIKE '%a%'
+  AND it.info ='mini biography'
+  AND lt.link ='features'
+  AND n.name_pcode_cf BETWEEN 'A' AND 'F'
+  AND (n.gender='m'
+       OR (n.gender = 'f'
+           AND n.name LIKE 'B%'))
+  AND pi.note ='Volker Boehm'
+  AND t.production_year BETWEEN 1980 AND 1995
+  AND n.id = an.person_id
+  AND n.id = pi.person_id
+  AND ci.person_id = n.id
+  AND t.id = ci.movie_id
+  AND ml.linked_movie_id = t.id
+  AND lt.id = ml.link_type_id
+  AND it.id = pi.info_type_id
+  AND pi.person_id = an.person_id
+  AND pi.person_id = ci.person_id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = ml.linked_movie_id;",7a.sql,2753771bb818061fdd15aea4fc147d56a89b491a2826c0b58466e72e819ff883
+7b,"SELECT MIN(n.name) AS of_person,
+       MIN(t.title) AS biography_movie
+FROM aka_name AS an,
+     cast_info AS ci,
+     info_type AS it,
+     link_type AS lt,
+     movie_link AS ml,
+     name AS n,
+     person_info AS pi,
+     title AS t
+WHERE an.name LIKE '%a%'
+  AND it.info ='mini biography'
+  AND lt.link ='features'
+  AND n.name_pcode_cf LIKE 'D%'
+  AND n.gender='m'
+  AND pi.note ='Volker Boehm'
+  AND t.production_year BETWEEN 1980 AND 1984
+  AND n.id = an.person_id
+  AND n.id = pi.person_id
+  AND ci.person_id = n.id
+  AND t.id = ci.movie_id
+  AND ml.linked_movie_id = t.id
+  AND lt.id = ml.link_type_id
+  AND it.id = pi.info_type_id
+  AND pi.person_id = an.person_id
+  AND pi.person_id = ci.person_id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = ml.linked_movie_id;",7b.sql,79b9358e5186d27007b2a3f35c18bb009b054040f85417e1858f19413993914b
+7c,"SELECT MIN(n.name) AS cast_member_name,
+       MIN(pi.info) AS cast_member_info
+FROM aka_name AS an,
+     cast_info AS ci,
+     info_type AS it,
+     link_type AS lt,
+     movie_link AS ml,
+     name AS n,
+     person_info AS pi,
+     title AS t
+WHERE an.name IS NOT NULL
+  AND (an.name LIKE '%a%'
+       OR an.name LIKE 'A%')
+  AND it.info ='mini biography'
+  AND lt.link IN ('references',
+                  'referenced in',
+                  'features',
+                  'featured in')
+  AND n.name_pcode_cf BETWEEN 'A' AND 'F'
+  AND (n.gender='m'
+       OR (n.gender = 'f'
+           AND n.name LIKE 'A%'))
+  AND pi.note IS NOT NULL
+  AND t.production_year BETWEEN 1980 AND 2010
+  AND n.id = an.person_id
+  AND n.id = pi.person_id
+  AND ci.person_id = n.id
+  AND t.id = ci.movie_id
+  AND ml.linked_movie_id = t.id
+  AND lt.id = ml.link_type_id
+  AND it.id = pi.info_type_id
+  AND pi.person_id = an.person_id
+  AND pi.person_id = ci.person_id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = ml.linked_movie_id;",7c.sql,ba0091ee5a01f36f30910035b54bbb08582949dda268ddd4e700854e409c97bf
+8a,"SELECT MIN(an1.name) AS actress_pseudonym,
+       MIN(t.title) AS japanese_movie_dubbed
+FROM aka_name AS an1,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n1,
+     role_type AS rt,
+     title AS t
+WHERE ci.note ='(voice: English version)'
+  AND cn.country_code ='[jp]'
+  AND mc.note LIKE '%(Japan)%'
+  AND mc.note NOT LIKE '%(USA)%'
+  AND n1.name LIKE '%Yo%'
+  AND n1.name NOT LIKE '%Yu%'
+  AND rt.role ='actress'
+  AND an1.person_id = n1.id
+  AND n1.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND an1.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id;",8a.sql,a8d5f36074bd12f3d42934913b7847774ca70b43338beb2cde2952851f50e3f6
+8b,"SELECT MIN(an.name) AS acress_pseudonym,
+       MIN(t.title) AS japanese_anime_movie
+FROM aka_name AS an,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note ='(voice: English version)'
+  AND cn.country_code ='[jp]'
+  AND mc.note LIKE '%(Japan)%'
+  AND mc.note NOT LIKE '%(USA)%'
+  AND (mc.note LIKE '%(2006)%'
+       OR mc.note LIKE '%(2007)%')
+  AND n.name LIKE '%Yo%'
+  AND n.name NOT LIKE '%Yu%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2006 AND 2007
+  AND (t.title LIKE 'One Piece%'
+       OR t.title LIKE 'Dragon Ball Z%')
+  AND an.person_id = n.id
+  AND n.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND an.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id;",8b.sql,e3cda2801dcb05a99f339b5c3ef7ed8646e1ecf382664168061029eb3ae29db6
+8c,"SELECT MIN(a1.name) AS writer_pseudo_name,
+       MIN(t.title) AS movie_title
+FROM aka_name AS a1,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n1,
+     role_type AS rt,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND rt.role ='writer'
+  AND a1.person_id = n1.id
+  AND n1.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND a1.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id;",8c.sql,d583eba4db3a15277447be27652879cd4439ec34f1fc471982dea76729a5d099
+8d,"SELECT MIN(an1.name) AS costume_designer_pseudo,
+       MIN(t.title) AS movie_with_costumes
+FROM aka_name AS an1,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n1,
+     role_type AS rt,
+     title AS t
+WHERE cn.country_code ='[us]'
+  AND rt.role ='costume designer'
+  AND an1.person_id = n1.id
+  AND n1.id = ci.person_id
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND an1.person_id = ci.person_id
+  AND ci.movie_id = mc.movie_id;",8d.sql,5ad3875f0bd158450b47e4a24b24e53045a6546fa0f7530a951504b61bad4e62
+9a,"SELECT MIN(an.name) AS alternative_name,
+       MIN(chn.name) AS character_name,
+       MIN(t.title) AS movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND mc.note IS NOT NULL
+  AND (mc.note LIKE '%(USA)%'
+       OR mc.note LIKE '%(worldwide)%')
+  AND n.gender ='f'
+  AND n.name LIKE '%Ang%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2005 AND 2015
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND n.id = ci.person_id
+  AND chn.id = ci.person_role_id
+  AND an.person_id = n.id
+  AND an.person_id = ci.person_id;",9a.sql,1e2fcf63ad6fa5286704eb78c9b1c998a12605412fb34ed6f0b92923adc4f543
+9b,"SELECT MIN(an.name) AS alternative_name,
+       MIN(chn.name) AS voiced_character,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS american_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note = '(voice)'
+  AND cn.country_code ='[us]'
+  AND mc.note LIKE '%(200%)%'
+  AND (mc.note LIKE '%(USA)%'
+       OR mc.note LIKE '%(worldwide)%')
+  AND n.gender ='f'
+  AND n.name LIKE '%Angel%'
+  AND rt.role ='actress'
+  AND t.production_year BETWEEN 2007 AND 2010
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND n.id = ci.person_id
+  AND chn.id = ci.person_role_id
+  AND an.person_id = n.id
+  AND an.person_id = ci.person_id;",9b.sql,652106b0bc0741517a54838af9e71249765856d883088bdca4ec7caf4858fd65
+9c,"SELECT MIN(an.name) AS alternative_name,
+       MIN(chn.name) AS voiced_character_name,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS american_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND n.gender ='f'
+  AND n.name LIKE '%An%'
+  AND rt.role ='actress'
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND n.id = ci.person_id
+  AND chn.id = ci.person_role_id
+  AND an.person_id = n.id
+  AND an.person_id = ci.person_id;",9c.sql,b3a9cb8f2e5b9d07c8906793ec054e4dcbcd48ed2e8f078db87066372528664c
+9d,"SELECT MIN(an.name) AS alternative_name,
+       MIN(chn.name) AS voiced_char_name,
+       MIN(n.name) AS voicing_actress,
+       MIN(t.title) AS american_movie
+FROM aka_name AS an,
+     char_name AS chn,
+     cast_info AS ci,
+     company_name AS cn,
+     movie_companies AS mc,
+     name AS n,
+     role_type AS rt,
+     title AS t
+WHERE ci.note IN ('(voice)',
+                  '(voice: Japanese version)',
+                  '(voice) (uncredited)',
+                  '(voice: English version)')
+  AND cn.country_code ='[us]'
+  AND n.gender ='f'
+  AND rt.role ='actress'
+  AND ci.movie_id = t.id
+  AND t.id = mc.movie_id
+  AND ci.movie_id = mc.movie_id
+  AND mc.company_id = cn.id
+  AND ci.role_id = rt.id
+  AND n.id = ci.person_id
+  AND chn.id = ci.person_role_id
+  AND an.person_id = n.id
+  AND an.person_id = ci.person_id;",9d.sql,be3b61d598df58d2b43cbabaa07997ace2e13b0c7165ae33834a2c79e295ce22

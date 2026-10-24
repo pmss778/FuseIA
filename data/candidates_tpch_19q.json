@@ -1,0 +1,146 @@
+[
+ {
+  "name": "lineitem(l_receiptdate)",
+  "table": "lineitem",
+  "column": "l_receiptdate",
+  "plan_node": "Index Scan",
+  "plan_rows": 5.0,
+  "rows_kept_fraction": 0.0,
+  "utility_total": 78683.75,
+  "utility_per_mib": 52.6425,
+  "storage_mib": 1494.68,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 2544,
+   "ndv_ratio": 4.241e-05,
+   "null_frac": 0.0,
+   "table_rows": 59985944
+  }
+ },
+ {
+  "name": "lineitem(l_shipdate)",
+  "table": "lineitem",
+  "column": "l_shipdate",
+  "plan_node": "Seq Scan",
+  "plan_rows": 14874024.0,
+  "rows_kept_fraction": 0.247958,
+  "utility_total": 471750.6,
+  "utility_per_mib": 315.6199,
+  "storage_mib": 1494.68,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 2525,
+   "ndv_ratio": 4.209e-05,
+   "null_frac": 0.0,
+   "table_rows": 59985944
+  }
+ },
+ {
+  "name": "lineitem(l_shipmode)",
+  "table": "lineitem",
+  "column": "l_shipmode",
+  "plan_node": "Seq Scan",
+  "plan_rows": 72497.0,
+  "rows_kept_fraction": 0.001209,
+  "utility_total": 214031.91,
+  "utility_per_mib": 136.377,
+  "storage_mib": 1569.414,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 7,
+   "ndv_ratio": 1.2e-07,
+   "null_frac": 0.0,
+   "table_rows": 59985944
+  }
+ },
+ {
+  "name": "orders(o_orderdate)",
+  "table": "orders",
+  "column": "o_orderdate",
+  "plan_node": "Seq Scan",
+  "plan_rows": 1823004.0,
+  "rows_kept_fraction": 0.121534,
+  "utility_total": 81601.72,
+  "utility_per_mib": 218.3278,
+  "storage_mib": 373.758,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 2406,
+   "ndv_ratio": 0.0001604,
+   "null_frac": 0.0,
+   "table_rows": 15000000
+  }
+ },
+ {
+  "name": "part(p_brand)",
+  "table": "part",
+  "column": "p_brand",
+  "plan_node": "Seq Scan",
+  "plan_rows": 74618.0,
+  "rows_kept_fraction": 0.037309,
+  "utility_total": 12987.86,
+  "utility_per_mib": 208.5095,
+  "storage_mib": 62.289,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 25,
+   "ndv_ratio": 1.25e-05,
+   "null_frac": 0.0,
+   "table_rows": 2000000
+  }
+ },
+ {
+  "name": "part(p_container)",
+  "table": "part",
+  "column": "p_container",
+  "plan_node": "Seq Scan",
+  "plan_rows": 1206.0,
+  "rows_kept_fraction": 0.000603,
+  "utility_total": 1737.02,
+  "utility_per_mib": 29.0487,
+  "storage_mib": 59.797,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 40,
+   "ndv_ratio": 2e-05,
+   "null_frac": 0.0,
+   "table_rows": 2000000
+  }
+ },
+ {
+  "name": "part(p_size)",
+  "table": "part",
+  "column": "p_size",
+  "plan_node": "Seq Scan",
+  "plan_rows": 74618.0,
+  "rows_kept_fraction": 0.037309,
+  "utility_total": 4182.61,
+  "utility_per_mib": 83.9407,
+  "storage_mib": 49.828,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 50,
+   "ndv_ratio": 2.5e-05,
+   "null_frac": 0.0,
+   "table_rows": 2000000
+  }
+ },
+ {
+  "name": "part(p_type)",
+  "table": "part",
+  "column": "p_type",
+  "plan_node": "Seq Scan",
+  "plan_rows": 3383.0,
+  "rows_kept_fraction": 0.001692,
+  "utility_total": 16171.54,
+  "utility_per_mib": 175.4201,
+  "storage_mib": 92.188,
+  "referenced_by_queries": 0,
+  "pg_stats": {
+   "n_distinct": 150,
+   "ndv_ratio": 7.5e-05,
+   "null_frac": 0.0,
+   "table_rows": 2000000
+  }
+ }
+]

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "canonical_workloads": [
+    {
+      "benchmark": "tpch",
+      "variant": "standard_19q",
+      "path": "data/workloads/tpch/tpch_test_19q.csv",
+      "queries": 19,
+      "sha256": "7cc3f85158c9d9fad11e03d7eb0e75ffdf7221eb5d4e48fe350b3f0990b3e532"
+    },
+    {
+      "benchmark": "tpch",
+      "variant": "modified_19q",
+      "path": "data/workloads/tpch/tpch_test_19q_modified.csv",
+      "queries": 19,
+      "sha256": "bce25eb694ef360e434faae572013decad71c8e04b036aed1ef03b1e804be439"
+    },
+    {
+      "benchmark": "tpcds",
+      "scale_factor": 1,
+      "variant": "paper_83q",
+      "path": "data/workloads/tpcds/sf1/tpcds83_pg_paper.csv",
+      "queries": 83,
+      "sha256": "a86d93530fba5957c8175f2d1db1cf850da9458104e822540f7e9c3df8e59b79"
+    },
+    {
+      "benchmark": "job",
+      "variant": "test_113q",
+      "path": "data/workloads/job/job_test_113q.csv",
+      "queries": 113,
+      "sha256": "888a9c25a950ce4b3dcb210f5aee15b9f7bc0304571a3e981f1c2e73d9f036b2"
+    }
+  ],
+  "duplicate_warnings": [
+    {
+      "sha256": "04718d0a608f9120a45ef087d022edc162b1dd94e88ce9b636c063242504cb80",
+      "note": "Different SHA256 from canonical JOB workload in data/workloads/job/job_test_113q.csv; do not silently substitute.",
+      "comparison_copy": "job_test_113q.csv"
+    },
+    {
+      "note": "Raw bytes differ from canonical TPC-H, though the parsed query sequence was previously verified equivalent.",
+      "comparison_copy": "tpch_test_19q.csv"
+    },
+    {
+      "sha256": "a86d93530fba5957c8175f2d1db1cf850da9458104e822540f7e9c3df8e59b79",
+      "note": "Byte-identical copy of the canonical workload in data/workloads/tpcds/sf1/tpcds83_pg_paper.csv.",
+      "comparison_copy": "tpcds83_pg_paper.csv"
+    }
+  ],
+  "supporting_data": {
+    "tpcds_sf1_statistics": "data/statistics/tpcds_sf1/",
+    "tpcds_sf1_no_primary_key_statistics": "data/statistics/tpcds_sf1_nopk/",
+    "candidate_pools": "data/index_candidates/",
+    "training_manifests": "data/manifests/job/",
+    "structured_training_data": "data/structured_sft/ and data/structured_teacher/"
+  }
+}

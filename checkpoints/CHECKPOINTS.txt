@@ -1,0 +1,9 @@
+FuseIA checkpoint bundle
+
+sft/proposer and sft/arbiter
+  Structured SFT best checkpoints.
+
+grpo/proposer and grpo/arbiter
+  GRPO aligned checkpoint pair: Proposer update 30 and Arbiter update 30.
+  The source training run used original and anonymous views; this bundle preserves
+  the selected update pair for local inference.

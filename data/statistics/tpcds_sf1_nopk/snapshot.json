@@ -1,0 +1,10 @@
+{
+  "database": "indexselection_tpcds___1_no_pk",
+  "database_size_bytes": 1736707419,
+  "postgresql_version": "14.24 (Ubuntu 14.24-1.pgdg24.04+2)",
+  "primary_key_constraints": 0,
+  "secondary_indexes": 0,
+  "tables": 25,
+  "columns_with_stats": 429,
+  "stats_version": "8b57eda926e8af8d"
+}

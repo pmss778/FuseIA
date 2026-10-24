@@ -1,0 +1,8098 @@
+{
+ "query_roles": [
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "company_type": {
+    "join": [
+     "company_type.id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.role_id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "company_type": {
+    "join": [
+     "company_type.id"
+    ],
+    "selection": []
+   },
+   "role_type": {
+    "join": [
+     "role_type.id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id",
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "link_type": {
+    "selection": [],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "join": [
+     "link_type.id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.movie_id"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.movie_id"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.id",
+     "kind_type.kind"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "aka_title": {
+    "join": [
+     "aka_title.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id",
+     "movie_info.note"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id",
+     "info_type.info"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.movie_id"
+    ]
+   },
+   "aka_title": {
+    "join": [
+     "aka_title.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id",
+     "movie_info.note"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id",
+     "info_type.info"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id"
+    ]
+   }
+  },
+  {
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.note"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "keyword": {
+    "selection": [],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "join": [
+     "company_type.id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "aka_title": {
+    "join": [
+     "aka_title.id",
+     "aka_title.movie_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_info": {
+    "selection": [
+     "movie_info.note"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "keyword": {
+    "selection": [],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "company_type": {
+    "join": [
+     "company_type.id"
+    ],
+    "selection": []
+   },
+   "aka_title": {
+    "join": [
+     "aka_title.id",
+     "aka_title.movie_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.episode_nr"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.episode_nr"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.episode_nr"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id"
+    ],
+    "selection": []
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.movie_id"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id",
+     "cast_info.note"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id",
+     "name.name"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id",
+     "movie_info.note"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.note"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.note"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.id",
+     "role_type.role"
+    ]
+   }
+  },
+  {
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info": {
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   }
+  },
+  {
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   }
+  },
+  {
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.note"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id",
+     "info_type.info"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id"
+    ]
+   }
+  },
+  {
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "company_type": {
+    "selection": [],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.note"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id",
+     "info_type.info"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.note"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id",
+     "info_type.info"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.id",
+     "role_type.role"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id",
+     "char_name.name"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.id",
+     "comp_cast_type.kind"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id",
+     "company_type.kind"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.id",
+     "company_name.name"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.id",
+     "comp_cast_type.kind"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id",
+     "company_type.kind"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.id",
+     "company_name.name"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.id",
+     "company_type.kind"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.id",
+     "company_name.name"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.id",
+     "link_type.link"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "company_type": {
+    "selection": [],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.id",
+     "kind_type.kind"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "company_type": {
+    "selection": [],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.id",
+     "kind_type.kind"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "company_type": {
+    "join": [
+     "company_type.id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.name"
+    ],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "person_info": {
+    "join": [
+     "person_info.id",
+     "person_info.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "char_name": {
+    "selection": [
+     "char_name.name"
+    ],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "person_info": {
+    "join": [
+     "person_info.id",
+     "person_info.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "person_info": {
+    "join": [
+     "person_info.id",
+     "person_info.info_type_id",
+     "person_info.person_id"
+    ],
+    "selection": []
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id"
+    ],
+    "selection": []
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code",
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.note"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "complete_cast": {
+    "join": [
+     "complete_cast.id",
+     "complete_cast.movie_id",
+     "complete_cast.status_id",
+     "complete_cast.subject_id"
+    ],
+    "selection": []
+   },
+   "comp_cast_type": {
+    "selection": [
+     "comp_cast_type.kind"
+    ],
+    "join": [
+     "comp_cast_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.note"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id",
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.name"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "selection": [
+     "movie_companies.company_id"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "join": [
+     "link_type.id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "join": [
+     "link_type.id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.linked_movie_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.linked_movie_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id",
+     "title.kind_id"
+    ]
+   },
+   "kind_type": {
+    "selection": [
+     "kind_type.kind"
+    ],
+    "join": [
+     "kind_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.linked_movie_id",
+     "movie_link.movie_id"
+    ],
+    "selection": []
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.movie_id"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.movie_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   }
+  },
+  {
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.id",
+     "keyword.keyword"
+    ]
+   }
+  },
+  {
+   "movie_info_idx": {
+    "selection": [
+     "movie_info_idx.info"
+    ],
+    "join": [
+     "movie_info_idx.id",
+     "movie_info_idx.info_type_id",
+     "movie_info_idx.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.movie_id"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id"
+    ]
+   },
+   "info_type": {
+    "join": [
+     "info_type.id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.id",
+     "title.production_year"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.id",
+     "movie_info.info",
+     "movie_info.movie_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_type_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_type": {
+    "selection": [
+     "company_type.kind"
+    ],
+    "join": [
+     "company_type.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_info": {
+    "selection": [
+     "movie_info.info",
+     "movie_info.movie_id"
+    ],
+    "join": [
+     "movie_info.id",
+     "movie_info.info_type_id"
+    ]
+   },
+   "info_type": {
+    "join": [
+     "info_type.id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.keyword_id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "keyword": {
+    "selection": [
+     "keyword.keyword"
+    ],
+    "join": [
+     "keyword.id"
+    ]
+   },
+   "movie_keyword": {
+    "selection": [
+     "movie_keyword.keyword_id"
+    ],
+    "join": [
+     "movie_keyword.id",
+     "movie_keyword.movie_id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "aka_name": {
+    "selection": [
+     "aka_name.name"
+    ],
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ]
+   },
+   "person_info": {
+    "selection": [
+     "person_info.note"
+    ],
+    "join": [
+     "person_info.id",
+     "person_info.info_type_id",
+     "person_info.person_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name",
+     "name.name_pcode_cf"
+    ],
+    "join": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "aka_name": {
+    "selection": [
+     "aka_name.name"
+    ],
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ]
+   },
+   "person_info": {
+    "selection": [
+     "person_info.note"
+    ],
+    "join": [
+     "person_info.id",
+     "person_info.info_type_id",
+     "person_info.person_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name_pcode_cf"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id"
+    ]
+   }
+  },
+  {
+   "link_type": {
+    "selection": [
+     "link_type.link"
+    ],
+    "join": [
+     "link_type.id"
+    ]
+   },
+   "movie_link": {
+    "join": [
+     "movie_link.id",
+     "movie_link.link_type_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id"
+    ]
+   },
+   "aka_name": {
+    "selection": [
+     "aka_name.name"
+    ],
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ]
+   },
+   "person_info": {
+    "selection": [
+     "person_info.note"
+    ],
+    "join": [
+     "person_info.id",
+     "person_info.info_type_id",
+     "person_info.person_id"
+    ]
+   },
+   "info_type": {
+    "selection": [
+     "info_type.info"
+    ],
+    "join": [
+     "info_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name",
+     "name.name_pcode_cf"
+    ],
+    "join": [
+     "name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id",
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year",
+     "title.title"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [
+     "name.id",
+     "name.name"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.id",
+     "role_type.role"
+    ]
+   }
+  },
+  {
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "cast_info": {
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "join": [
+     "title.id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "cast_info": {
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "title": {
+    "join": [
+     "title.id"
+    ],
+    "selection": []
+   },
+   "name": {
+    "selection": [],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id",
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id"
+    ]
+   }
+  },
+  {
+   "movie_companies": {
+    "selection": [
+     "movie_companies.note"
+    ],
+    "join": [
+     "movie_companies.company_id",
+     "movie_companies.id"
+    ]
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [
+     "title.production_year"
+    ],
+    "join": [
+     "title.id"
+    ]
+   },
+   "cast_info": {
+    "selection": [
+     "cast_info.movie_id",
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   },
+   "char_name": {
+    "selection": [
+     "char_name.id"
+    ]
+   }
+  },
+  {
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender",
+     "name.name"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  },
+  {
+   "cast_info": {
+    "selection": [
+     "cast_info.note"
+    ],
+    "join": [
+     "cast_info.id",
+     "cast_info.movie_id",
+     "cast_info.person_id",
+     "cast_info.role_id"
+    ]
+   },
+   "role_type": {
+    "selection": [
+     "role_type.role"
+    ],
+    "join": [
+     "role_type.id"
+    ]
+   },
+   "char_name": {
+    "selection": [],
+    "join": [
+     "char_name.id"
+    ]
+   },
+   "name": {
+    "selection": [
+     "name.gender"
+    ],
+    "join": [
+     "name.id"
+    ]
+   },
+   "movie_companies": {
+    "join": [
+     "movie_companies.id",
+     "movie_companies.movie_id"
+    ],
+    "selection": []
+   },
+   "company_name": {
+    "selection": [
+     "company_name.country_code"
+    ],
+    "join": [
+     "company_name.id"
+    ]
+   },
+   "title": {
+    "selection": [],
+    "join": [
+     "title.id"
+    ]
+   },
+   "aka_name": {
+    "join": [
+     "aka_name.id",
+     "aka_name.person_id"
+    ],
+    "selection": []
+   }
+  }
+ ],
+ "clause_evidence": {
+  "group_by": [],
+  "order_by": [],
+  "join_pairs": [
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "aka_title.movie_id",
+    "movie_companies.movie_id"
+   ],
+   [
+    "aka_title.movie_id",
+    "movie_companies.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_companies.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_companies.movie_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "movie_info_idx.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "movie_info_idx.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "cast_info.person_id",
+    "person_info.person_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_keyword.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "complete_cast.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_companies.movie_id",
+    "movie_info_idx.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "movie_keyword.movie_id",
+    "movie_link.movie_id"
+   ],
+   [
+    "aka_name.person_id",
+    "person_info.person_id"
+   ],
+   [
+    "aka_name.person_id",
+    "person_info.person_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "aka_name.person_id",
+    "cast_info.person_id"
+   ],
+   [
+    "cast_info.movie_id",
+    "movie_companies.movie_id"
+   ],
+   [
+    "cast_info.movie_id",
+    "movie_companies.movie_id"
+   ]
+  ],
+  "where_columns": [
+   "company_name.country_code",
+   "title.production_year",
+   "cast_info.note",
+   "role_type.role",
+   "char_name.id",
+   "company_type.id",
+   "movie_companies.note",
+   "keyword.keyword",
+   "movie_keyword.keyword_id",
+   "company_type.kind",
+   "company_name.name",
+   "link_type.id",
+   "link_type.link",
+   "title.title",
+   "movie_companies.company_id",
+   "movie_info_idx.info",
+   "info_type.info",
+   "movie_info.info",
+   "kind_type.kind",
+   "movie_info.movie_id",
+   "keyword.id",
+   "kind_type.id",
+   "title.id",
+   "movie_info.id",
+   "movie_info.note",
+   "info_type.id",
+   "movie_keyword.id",
+   "movie_keyword.movie_id",
+   "movie_companies.id",
+   "title.episode_nr",
+   "name.id",
+   "name.name",
+   "company_name.id",
+   "cast_info.movie_id",
+   "name.gender",
+   "cast_info.id",
+   "role_type.id",
+   "comp_cast_type.kind",
+   "char_name.name",
+   "comp_cast_type.id",
+   "aka_name.name",
+   "person_info.note",
+   "name.name_pcode_cf"
+  ]
+ },
+ "candidates": [
+  {
+   "name": "cast_info(movie_id)",
+   "table": "cast_info",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1005496.0,
+   "rows_kept_fraction": 0.027754,
+   "selectivity": 0.027754,
+   "clauses": [],
+   "storage_mib": 902.703,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1005496,
+    "ndv_ratio": 0.02775442,
+    "null_frac": 0.0,
+    "table_rows": 36228316
+   }
+  },
+  {
+   "name": "movie_info(movie_id)",
+   "table": "movie_info",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 363299.0,
+   "rows_kept_fraction": 0.024462,
+   "selectivity": 0.024462,
+   "clauses": [],
+   "storage_mib": 370.055,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 363299,
+    "ndv_ratio": 0.0244619,
+    "null_frac": 0.0,
+    "table_rows": 14851626
+   }
+  },
+  {
+   "name": "movie_keyword(movie_id)",
+   "table": "movie_keyword",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 99657.0,
+   "rows_kept_fraction": 0.022029,
+   "selectivity": 0.022029,
+   "clauses": [],
+   "storage_mib": 112.719,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 99657,
+    "ndv_ratio": 0.02202886,
+    "null_frac": 0.0,
+    "table_rows": 4523930
+   }
+  },
+  {
+   "name": "movie_companies(movie_id)",
+   "table": "movie_companies",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 0.0,
+   "selectivity": 0.0,
+   "clauses": [],
+   "storage_mib": 65.008,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 3.8e-07,
+    "null_frac": 0.0,
+    "table_rows": 2609129
+   }
+  },
+  {
+   "name": "movie_info_idx(movie_id)",
+   "table": "movie_info_idx",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 1e-06,
+   "selectivity": 1e-06,
+   "clauses": [],
+   "storage_mib": 34.383,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 7.2e-07,
+    "null_frac": 0.0,
+    "table_rows": 1380035
+   }
+  },
+  {
+   "name": "title(production_year)",
+   "table": "title",
+   "column": "production_year",
+   "plan_node": "llm_proposed",
+   "plan_rows": 122.0,
+   "rows_kept_fraction": 4.8e-05,
+   "selectivity": 4.8e-05,
+   "clauses": [],
+   "storage_mib": 62.992,
+   "referenced_by_queries": 81,
+   "pg_stats": {
+    "n_distinct": 122,
+    "ndv_ratio": 4.826e-05,
+    "null_frac": 0.0278,
+    "table_rows": 2528179
+   }
+  },
+  {
+   "name": "cast_info(note)",
+   "table": "cast_info",
+   "column": "note",
+   "plan_node": "llm_proposed",
+   "plan_rows": 3754.0,
+   "rows_kept_fraction": 0.000104,
+   "selectivity": 0.000104,
+   "clauses": [],
+   "storage_mib": 1534.602,
+   "referenced_by_queries": 63,
+   "pg_stats": {
+    "n_distinct": 3754,
+    "ndv_ratio": 0.00010362,
+    "null_frac": 0.6073,
+    "table_rows": 36228316
+   }
+  },
+  {
+   "name": "movie_info(info)",
+   "table": "movie_info",
+   "column": "info",
+   "plan_node": "llm_proposed",
+   "plan_rows": 20826.0,
+   "rows_kept_fraction": 0.001402,
+   "selectivity": 0.001402,
+   "clauses": [],
+   "storage_mib": 1073.172,
+   "referenced_by_queries": 73,
+   "pg_stats": {
+    "n_distinct": 20826,
+    "ndv_ratio": 0.00140227,
+    "null_frac": 0.0,
+    "table_rows": 14851626
+   }
+  },
+  {
+   "name": "movie_info_idx(info)",
+   "table": "movie_info_idx",
+   "column": "info",
+   "plan_node": "llm_proposed",
+   "plan_rows": 11175.0,
+   "rows_kept_fraction": 0.008098,
+   "selectivity": 0.008098,
+   "clauses": [],
+   "storage_mib": 37.82,
+   "referenced_by_queries": 73,
+   "pg_stats": {
+    "n_distinct": 11175,
+    "ndv_ratio": 0.00809762,
+    "null_frac": 0.0,
+    "table_rows": 1380035
+   }
+  },
+  {
+   "name": "keyword(keyword)",
+   "table": "keyword",
+   "column": "keyword",
+   "plan_node": "llm_proposed",
+   "plan_rows": 134170.0,
+   "rows_kept_fraction": 1.0,
+   "selectivity": 1.0,
+   "clauses": [],
+   "storage_mib": 5.344,
+   "referenced_by_queries": 75,
+   "pg_stats": {
+    "n_distinct": 134170,
+    "ndv_ratio": 1.0,
+    "null_frac": 0.0,
+    "table_rows": 134170
+   }
+  },
+  {
+   "name": "company_name(country_code)",
+   "table": "company_name",
+   "column": "country_code",
+   "plan_node": "llm_proposed",
+   "plan_rows": 169.0,
+   "rows_kept_fraction": 0.000719,
+   "selectivity": 0.000719,
+   "clauses": [],
+   "storage_mib": 6.141,
+   "referenced_by_queries": 64,
+   "pg_stats": {
+    "n_distinct": 169,
+    "ndv_ratio": 0.00071916,
+    "null_frac": 0.104,
+    "table_rows": 234997
+   }
+  },
+  {
+   "name": "cast_info(person_id)",
+   "table": "cast_info",
+   "column": "person_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 70764.0,
+   "rows_kept_fraction": 0.001953,
+   "selectivity": 0.001953,
+   "clauses": [],
+   "storage_mib": 902.703,
+   "referenced_by_queries": 54,
+   "pg_stats": {
+    "n_distinct": 70764,
+    "ndv_ratio": 0.00195328,
+    "null_frac": 0.0,
+    "table_rows": 36228316
+   }
+  },
+  {
+   "name": "cast_info(person_role_id)",
+   "table": "cast_info",
+   "column": "person_role_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 23155.0,
+   "rows_kept_fraction": 0.000639,
+   "selectivity": 0.000639,
+   "clauses": [],
+   "storage_mib": 902.703,
+   "referenced_by_queries": 22,
+   "pg_stats": {
+    "n_distinct": 23155,
+    "ndv_ratio": 0.00063914,
+    "null_frac": 0.5101,
+    "table_rows": 36228316
+   }
+  },
+  {
+   "name": "movie_keyword(keyword_id)",
+   "table": "movie_keyword",
+   "column": "keyword_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 14607.0,
+   "rows_kept_fraction": 0.003229,
+   "selectivity": 0.003229,
+   "clauses": [],
+   "storage_mib": 112.719,
+   "referenced_by_queries": 75,
+   "pg_stats": {
+    "n_distinct": 14607,
+    "ndv_ratio": 0.00322883,
+    "null_frac": 0.0,
+    "table_rows": 4523930
+   }
+  },
+  {
+   "name": "movie_companies(company_id)",
+   "table": "movie_companies",
+   "column": "company_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 19562.0,
+   "rows_kept_fraction": 0.007498,
+   "selectivity": 0.007498,
+   "clauses": [],
+   "storage_mib": 65.008,
+   "referenced_by_queries": 71,
+   "pg_stats": {
+    "n_distinct": 19562,
+    "ndv_ratio": 0.00749752,
+    "null_frac": 0.0,
+    "table_rows": 2609129
+   }
+  },
+  {
+   "name": "movie_info(info_type_id)",
+   "table": "movie_info",
+   "column": "info_type_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 69.0,
+   "rows_kept_fraction": 5e-06,
+   "selectivity": 5e-06,
+   "clauses": [],
+   "storage_mib": 370.055,
+   "referenced_by_queries": 64,
+   "pg_stats": {
+    "n_distinct": 69,
+    "ndv_ratio": 4.65e-06,
+    "null_frac": 0.0,
+    "table_rows": 14851626
+   }
+  },
+  {
+   "name": "movie_info_idx(info_type_id)",
+   "table": "movie_info_idx",
+   "column": "info_type_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 4.0,
+   "rows_kept_fraction": 3e-06,
+   "selectivity": 3e-06,
+   "clauses": [],
+   "storage_mib": 34.383,
+   "referenced_by_queries": 64,
+   "pg_stats": {
+    "n_distinct": 4,
+    "ndv_ratio": 2.9e-06,
+    "null_frac": 0.0,
+    "table_rows": 1380035
+   }
+  },
+  {
+   "name": "cast_info(role_id)",
+   "table": "cast_info",
+   "column": "role_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 11.0,
+   "rows_kept_fraction": 0.0,
+   "selectivity": 0.0,
+   "clauses": [],
+   "storage_mib": 902.703,
+   "referenced_by_queries": 20,
+   "pg_stats": {
+    "n_distinct": 11,
+    "ndv_ratio": 3e-07,
+    "null_frac": 0.0,
+    "table_rows": 36228316
+   }
+  },
+  {
+   "name": "complete_cast(movie_id)",
+   "table": "complete_cast",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 7e-06,
+   "selectivity": 7e-06,
+   "clauses": [],
+   "storage_mib": 3.359,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 7.4e-06,
+    "null_frac": 0.0,
+    "table_rows": 135086
+   }
+  },
+  {
+   "name": "aka_title(movie_id)",
+   "table": "aka_title",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 3e-06,
+   "selectivity": 3e-06,
+   "clauses": [],
+   "storage_mib": 9.0,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 2.77e-06,
+    "null_frac": 0.0,
+    "table_rows": 361472
+   }
+  },
+  {
+   "name": "movie_link(movie_id)",
+   "table": "movie_link",
+   "column": "movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 3.3e-05,
+   "selectivity": 3.3e-05,
+   "clauses": [],
+   "storage_mib": 0.742,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 3.334e-05,
+    "null_frac": 0.0,
+    "table_rows": 29997
+   }
+  },
+  {
+   "name": "movie_link(linked_movie_id)",
+   "table": "movie_link",
+   "column": "linked_movie_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 3.3e-05,
+   "selectivity": 3.3e-05,
+   "clauses": [],
+   "storage_mib": 0.742,
+   "referenced_by_queries": 8,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 3.334e-05,
+    "null_frac": 0.0,
+    "table_rows": 29997
+   }
+  },
+  {
+   "name": "aka_name(person_id)",
+   "table": "aka_name",
+   "column": "person_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 1e-06,
+   "selectivity": 1e-06,
+   "clauses": [],
+   "storage_mib": 22.453,
+   "referenced_by_queries": 54,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 1.11e-06,
+    "null_frac": 0.0,
+    "table_rows": 901343
+   }
+  },
+  {
+   "name": "person_info(person_id)",
+   "table": "person_info",
+   "column": "person_id",
+   "plan_node": "llm_proposed",
+   "plan_rows": 118939.0,
+   "rows_kept_fraction": 0.040073,
+   "selectivity": 0.040073,
+   "clauses": [],
+   "storage_mib": 73.953,
+   "referenced_by_queries": 54,
+   "pg_stats": {
+    "n_distinct": 118939,
+    "ndv_ratio": 0.0400729,
+    "null_frac": 0.0,
+    "table_rows": 2968066
+   }
+  },
+  {
+   "name": "char_name(name)",
+   "table": "char_name",
+   "column": "name",
+   "plan_node": "llm_proposed",
+   "plan_rows": 3140243.0,
+   "rows_kept_fraction": 1.0,
+   "selectivity": 1.0,
+   "clauses": [],
+   "storage_mib": 125.188,
+   "referenced_by_queries": 88,
+   "pg_stats": {
+    "n_distinct": 3140243,
+    "ndv_ratio": 1.0,
+    "null_frac": 0.0,
+    "table_rows": 3140243
+   }
+  },
+  {
+   "name": "name(name_pcode_cf)",
+   "table": "name",
+   "column": "name_pcode_cf",
+   "plan_node": "llm_proposed",
+   "plan_rows": 12296.0,
+   "rows_kept_fraction": 0.00295,
+   "selectivity": 0.00295,
+   "clauses": [],
+   "storage_mib": 109.031,
+   "referenced_by_queries": 3,
+   "pg_stats": {
+    "n_distinct": 12296,
+    "ndv_ratio": 0.00295043,
+    "null_frac": 0.0,
+    "table_rows": 4167529
+   }
+  },
+  {
+   "name": "title(title)",
+   "table": "title",
+   "column": "title",
+   "plan_node": "llm_proposed",
+   "plan_rows": 137039.0,
+   "rows_kept_fraction": 0.054205,
+   "selectivity": 0.054205,
+   "clauses": [],
+   "storage_mib": 103.938,
+   "referenced_by_queries": 113,
+   "pg_stats": {
+    "n_distinct": 137039,
+    "ndv_ratio": 0.05420463,
+    "null_frac": 0.0,
+    "table_rows": 2528179
+   }
+  },
+  {
+   "name": "company_name(name)",
+   "table": "company_name",
+   "column": "name",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1.0,
+   "rows_kept_fraction": 4e-06,
+   "selectivity": 4e-06,
+   "clauses": [],
+   "storage_mib": 10.242,
+   "referenced_by_queries": 88,
+   "pg_stats": {
+    "n_distinct": 1,
+    "ndv_ratio": 4.26e-06,
+    "null_frac": 0.0,
+    "table_rows": 234997
+   }
+  },
+  {
+   "name": "title(episode_nr)",
+   "table": "title",
+   "column": "episode_nr",
+   "plan_node": "llm_proposed",
+   "plan_rows": 1267.0,
+   "rows_kept_fraction": 0.000501,
+   "selectivity": 0.000501,
+   "clauses": [],
+   "storage_mib": 62.992,
+   "referenced_by_queries": 3,
+   "pg_stats": {
+    "n_distinct": 1267,
+    "ndv_ratio": 0.00050115,
+    "null_frac": 0.5649,
+    "table_rows": 2528179
+   }
+  },
+  {
+   "name": "person_info(note)",
+   "table": "person_info",
+   "column": "note",
+   "plan_node": "llm_proposed",
+   "plan_rows": 2672.0,
+   "rows_kept_fraction": 0.0009,
+   "selectivity": 0.0009,
+   "clauses": [],
+   "storage_mib": 114.625,
+   "referenced_by_queries": 63,
+   "pg_stats": {
+    "n_distinct": 2672,
+    "ndv_ratio": 0.00090025,
+    "null_frac": 0.9708,
+    "table_rows": 2968066
+   }
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+# Matches the cloud inference environment; CUDA wheel targets RTX 50-series.
+torch==2.7.1+cu128
+transformers==5.19.0
+peft==0.21.2
+accelerate==1.15.0
+safetensors==0.8.0
+sqlglot==30.22.0
